@@ -1,0 +1,14 @@
+[features]
+seeds = false
+[programs.localnet]
+gif_portal = "G71mEsqGnahVbikmpUcW1XKGokKYDU6S8zi2muacf6WA"
+
+[registry]
+url = "https://anchor.projectserum.com"
+
+[provider]
+cluster = "localnet"
+wallet = "/Users/laendugapally/.config/solana/id.json"
+
+[scripts]
+test = "yarn run ts-mocha -p ./tsconfig.json -t 1000000 tests/**/*.ts"
