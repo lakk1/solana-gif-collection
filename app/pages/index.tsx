@@ -1,11 +1,12 @@
-import { Box } from "@chakra-ui/react";
-import type { NextPage } from "next";
-import Head from "next/head";
-import RootLayout from "components/Layout";
-import SwapForm from "components/SwapForm";
-import { ReactElement } from "react";
+import { Box } from '@chakra-ui/react';
+import Head from 'next/head';
+import RootLayout from 'components/Layout';
+import { ReactElement } from 'react';
+import NFTCard from 'components/NFTCard';
+import useGIFHook from 'hooks/useGIF';
 
 export default function Home() {
+  const {  gifList=[] } = useGIFHook();
   return (
     <div>
       <Head>
@@ -16,14 +17,16 @@ export default function Home() {
 
       <Box
         sx={{
-          display: "flex",
-          justifyContent: "center",
-          alignItems: "center",
-          flexDirection: "column",
+          display: 'flex',
+          justifyContent: 'center',
+          alignItems: 'center',
+          flexDirection: 'column',
           mt: 8,
         }}
       >
-        <SwapForm />
+        {gifList && gifList.map((item, index) => (
+          <NFTCard item={item} key={index} />
+        ))}
       </Box>
     </div>
   );
