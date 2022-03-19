@@ -1,12 +1,12 @@
 [package]
-name = "gif-portal"
+name = "gif-collection"
 version = "0.1.0"
 description = "Created with Anchor"
 edition = "2018"
 
 [lib]
 crate-type = ["cdylib", "lib"]
-name = "gif_portal"
+name = "gif_collection"
 
 [features]
 no-entrypoint = []

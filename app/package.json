@@ -13,6 +13,8 @@
     "@chakra-ui/react": "^1.8.5",
     "@emotion/react": "^11",
     "@emotion/styled": "^11",
+    "@project-serum/anchor": "^0.22.1",
+    "@solana/web3.js": "^1.36.0",
     "@web3-react/core": "^6.1.9",
     "@web3-react/injected-connector": "^6.0.7",
     "ethers": "^5.5.4",

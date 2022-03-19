@@ -1,13 +1,13 @@
 [features]
 seeds = false
-[programs.localnet]
-gif_portal = "G71mEsqGnahVbikmpUcW1XKGokKYDU6S8zi2muacf6WA"
+[programs.devnet]
+gif_collection = "G71mEsqGnahVbikmpUcW1XKGokKYDU6S8zi2muacf6WA"
 
 [registry]
 url = "https://anchor.projectserum.com"
 
 [provider]
-cluster = "localnet"
+cluster = "devnet"
 wallet = "/Users/laendugapally/.config/solana/id.json"
 
 [scripts]

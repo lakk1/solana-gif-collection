@@ -4,7 +4,7 @@ use anchor_lang::solana_program::entrypoint::ProgramResult;
 declare_id!("G71mEsqGnahVbikmpUcW1XKGokKYDU6S8zi2muacf6WA");
 
 #[program]
-pub mod anchor_app {
+pub mod gif_collection {
     use super::*;
     pub fn start_stuff_off(_ctx: Context<StartStuffOff>) -> ProgramResult {
         let base_account = &mut _ctx.accounts.base_account;
