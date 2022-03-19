@@ -14,28 +14,7 @@ import ThemeSwitch from "../ThemeSwitch";
 import ConnectWallet from "../ConnectWallet";
 import Logo from "../Logo";
 
-const Links = ["Swap", "Tokens"];
-
-const NavLink = ({ children }: { children: ReactNode }) => (
-  <Link
-    px={2}
-    py={1}
-    sx={{
-      textTransform: "uppercase",
-      fontWeight: "semibold",
-      fontSize: "sm",
-    }}
-    rounded={"md"}
-    _hover={{
-      textDecoration: "none",
-      bg: useColorModeValue("gray.200", "gray.700"),
-    }}
-    href={"#"}
-  >
-    {children}
-  </Link>
-);
-
+ 
 export default function Navbar() {
   const { isOpen, onOpen, onClose } = useDisclosure();
 
@@ -51,32 +30,13 @@ export default function Navbar() {
             onClick={isOpen ? onClose : onOpen}
           />
           <Logo />
-          <HStack
-            as={"nav"}
-            spacing={4}
-            flex={1}
-            display={{ base: "none", md: "flex" }}
-            ml={16}
-          >
-            {Links.map((link) => (
-              <NavLink key={link}>{link}</NavLink>
-            ))}
-          </HStack>
+          <Box sx={{fontSize:26,fontWeight:'600'}}>Solana GIF Collection</Box>
           <Flex alignItems={"center"}>
             <ConnectWallet />
             <ThemeSwitch />
           </Flex>
         </Flex>
-
-        {isOpen ? (
-          <Box pb={4} display={{ md: "none" }}>
-            <Stack as={"nav"} spacing={4}>
-              {Links.map((link) => (
-                <NavLink key={link}>{link}</NavLink>
-              ))}
-            </Stack>
-          </Box>
-        ) : null}
+       
       </Box>
     </>
   );
