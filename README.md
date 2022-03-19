@@ -1,1 +1,1 @@
-Solana GIF Portal
+Solana GIF Collection

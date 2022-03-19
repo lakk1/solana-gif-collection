@@ -573,7 +573,7 @@ dependencies = [
 ]
 
 [[package]]
-name = "gif-portal"
+name = "gif-collection"
 version = "0.1.0"
 dependencies = [
  "anchor-lang",
