@@ -5,18 +5,14 @@ import idl from '../utils/idl.json';
 import kp from '../utils/keypair.json';
 const { SystemProgram, Keypair } = web3;
 
-// Create a keypair for the account that will hold the GIF data.
 const arr = Object.values(kp._keypair.secretKey);
 const secret = new Uint8Array(arr);
 const baseAccount = web3.Keypair.fromSecretKey(secret);
 
-// Get our program's id from the IDL file.
 const programID = new PublicKey(idl.metadata.address);
 
-// Set our network to devnet.
 const network = clusterApiUrl('devnet');
 
-// Controls how we want to acknowledge when a transaction is "done".
 const opts = {
   preflightCommitment: 'processed',
 };
@@ -25,16 +21,13 @@ const useGIFHook = () => {
   if (typeof window === 'undefined') {
     return {};
   }
-  // State
   const [walletAddress, setWalletAddress] = useState(null);
-  const [inputValue, setInputValue] = useState('');
   const [gifList, setGifList] = useState([]);
 
   const connection = new Connection(network, opts.preflightCommitment);
   const provider = new Provider(connection, window.solana, opts.preflightCommitment);
   const program = new Program(idl, programID, provider);
 
-  // Actions
   const checkIfWalletIsConnected = async () => {
     try {
       const { solana } = window;
@@ -44,10 +37,6 @@ const useGIFHook = () => {
           console.log('Phantom wallet found!');
           const response = await solana.connect({ onlyIfTrusted: true });
           console.log('Connected with Public Key:', response.publicKey.toString());
-
-          /*
-           * Set the user's publicKey in state to be used later!
-           */
           setWalletAddress(response.publicKey.toString());
         }
       } else {
@@ -58,21 +47,20 @@ const useGIFHook = () => {
     }
   };
 
-  const sendGif = async () => {
-    if (inputValue.length === 0) {
+  const sendGif = async (gifUrl) => {
+    if (gifUrl.length === 0) {
       console.log('No gif link given!');
       return;
     }
-    setInputValue('');
-    console.log('Gif link:', inputValue);
+    console.log('Gif link:', gifUrl);
     try {
-      await program.rpc.addGif(inputValue, {
+      await program.rpc.addGif(gifUrl, {
         accounts: {
           baseAccount: baseAccount.publicKey,
           user: provider.wallet.publicKey,
         },
       });
-      console.log('GIF successfully sent to program', inputValue);
+      console.log('GIF successfully sent to program', gifUrl);
 
       await getGifList();
     } catch (error) {
@@ -110,11 +98,6 @@ const useGIFHook = () => {
     } catch (error) {
       console.log('Error deleting GIF:', error);
     }
-  };
-
-  const onInputChange = (event) => {
-    const { value } = event.target;
-    setInputValue(value);
   };
 
   const connectWallet = async () => {
