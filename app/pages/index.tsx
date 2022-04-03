@@ -21,7 +21,7 @@ export default function Home() {
   return (
     <div>
       <Head>
-        <title>lakiswap</title>
+        <title>Solana GIF Portal | lakiswap</title>
         <meta name="description" content="Decentralize exchange" />
         <link rel="icon" href="/logo.svg" />
       </Head>
